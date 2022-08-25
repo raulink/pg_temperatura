@@ -4,42 +4,36 @@
 
 #include <LiquidCrystal_I2C.h>
 #include <SPI.h>
+//#include "../lib/temperatura/temperatura.h"
 #include "max6675.h"
 
-LiquidCrystal_I2C lcd (0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
+//LiquidCrystal_I2C lcd (0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
-MAX6675 termocupla(12,13,14);
+LiquidCrystal_I2C lcd(0x27);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+//LiquidCrystal_I2C lcd(0x38);
+int ktcSO = 12;
+int ktcCS = 13;
+int ktcCLK = 14;
+
+MAX6675 termocupla(ktcCLK, ktcCS, ktcSO);
 
 void setup() {
-  lcd.begin(16, 2);
+  
   Serial.begin(9600);
-
   Serial.println("MAX6675 test");
-  // wait for MAX chip to stabilize
-  delay(500);
+  lcd.begin(16, 2);  
+  Serial.begin(9600);
+  Serial.println("MAX6675 test");
+  delay(500); 
 }
 
 void loop() {
-  // basic readout test, just print the current temp
-
-   Serial.print("C = "); 
-   Serial.println(thermocouple.readCelsius());
-   Serial.print("F = ");
-   Serial.println(thermocouple.readFahrenheit());
+  // basic readout test, just print the current temperature  
   
    lcd.clear(); 
    lcd.print("T1 "); 
-   lcd.print(thermocouple.readCelsius());
+   lcd.print(termocupla.readCelsius());
    lcd.setCursor(0,1);
-   lcd.print("T2 ");
-   lcd.print(thermocouple2.readCelsius());
-   lcd.setCursor(8,0);
-   lcd.print("T3 ");
-   lcd.print(thermocouple3.readCelsius());
-   lcd.setCursor(8,1);
-   lcd.print("T4 ");
-   lcd.print(thermocouple4.readCelsius());
- 
    // For the MAX6675 to update, you must delay AT LEAST 250ms between reads!
    delay(500);
 }

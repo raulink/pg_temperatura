@@ -11,4 +11,14 @@
 
 #include "temperatura.h"
 
-#include <max6675.h>
+Temperatura::Temperatura(MAX6675 *thermocouple)
+{
+    this->thermocouple = thermocouple;
+}
+
+float Temperatura::leerTemperatura()
+{
+    return leerTemperatura(thermocouple);
+}
+
+
