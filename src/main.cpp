@@ -27,7 +27,7 @@ void setup() {
 }
 
 void loop() {  
-  
+    // Test git
    //lcd.clear(); 
    lcd.setCursor(0, 0);   
    lcd.print("Temperatura: "); 
