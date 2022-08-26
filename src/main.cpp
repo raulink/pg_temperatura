@@ -33,6 +33,7 @@ void loop() {
    lcd.clear(); 
    lcd.print("T1 "); 
    lcd.print(termocupla.readCelsius());
+   Serial.println(termocupla.readCelsius());
    lcd.setCursor(0,1);
    // For the MAX6675 to update, you must delay AT LEAST 250ms between reads!
    delay(500);
