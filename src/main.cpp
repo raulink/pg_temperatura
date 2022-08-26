@@ -22,9 +22,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("MAX6675 test");  
   lcd.init();
-  lcd.backlight();
-  Serial.begin(9600);
-  Serial.println("MAX6675 test");
+  lcd.backlight();    
   delay(500); 
 }
 
