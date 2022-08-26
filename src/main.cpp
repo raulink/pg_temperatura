@@ -36,4 +36,9 @@ void loop() {
    Serial.println(termocupla.readCelsius());
    // 250ms entre lecturas!
    delay(500);
+
+   /**
+    * @brief test de loop
+    * Test merge 
+    */
 }
